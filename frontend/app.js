@@ -11,7 +11,6 @@ const CONTRACT_ADDRESS = "0xBB5Fb3b6e9E51dcDBC2dfd0B16208242dEc20B97";
 let provider; // JsonRpcProvider on World Chain
 let contract;
 let currentAccount;
-let isWorldMiniApp = false;
 
 const WORLD_RPC_URL = "https://worldchain-mainnet.g.alchemy.com/public";
 const BACKEND_BASE = ""; // same origin; backend is server.js serving /api/*
@@ -70,14 +69,9 @@ function loadLocalTexts() {
 }
 
 async function connectWallet() {
-  if (!isWorldMiniApp) {
-    setStatus("This version of EtherCast is meant to run inside World App.", "error");
-    return;
-  }
-
   try {
     if (!window.MiniKit || !window.MiniKit.commandsAsync?.walletAuth) {
-      setStatus("MiniKit wallet auth is not available in this environment.", "error");
+      setStatus("MiniKit wallet auth is not available. Open EtherCast inside World App.", "error");
       return;
     }
 
@@ -127,11 +121,6 @@ async function connectWallet() {
 }
 
 async function submitAffirmation() {
-  if (!isWorldMiniApp) {
-    setStatus("This version of EtherCast is meant to run inside World App.", "error");
-    return;
-  }
-
   if (!currentAccount) {
     setStatus("Sign in with your World App wallet first.", "error");
     return;
@@ -162,7 +151,7 @@ async function submitAffirmation() {
     submitButton.disabled = true;
 
     if (!window.MiniKit || !window.MiniKit.commandsAsync?.sendTransaction) {
-      setStatus("MiniKit sendTransaction is not available.", "error");
+      setStatus("MiniKit sendTransaction is not available. Open EtherCast inside World App.", "error");
       return;
     }
 
