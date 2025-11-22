@@ -70,8 +70,8 @@ function loadLocalTexts() {
 
 async function connectWallet() {
   try {
-    if (!window.MiniKit || !window.MiniKit.commandsAsync?.walletAuth) {
-      setStatus("MiniKit wallet auth is not available. Open EtherCast inside World App.", "error");
+    if (!window.MiniKit || typeof window.MiniKit.isInstalled !== "function" || !window.MiniKit.isInstalled()) {
+      setStatus("Open EtherCast inside World App to sign in with your wallet.", "error");
       return;
     }
 
@@ -150,8 +150,8 @@ async function submitAffirmation() {
     setStatus("Submitting affirmation to chain...", "");
     submitButton.disabled = true;
 
-    if (!window.MiniKit || !window.MiniKit.commandsAsync?.sendTransaction) {
-      setStatus("MiniKit sendTransaction is not available. Open EtherCast inside World App.", "error");
+    if (!window.MiniKit || typeof window.MiniKit.isInstalled !== "function" || !window.MiniKit.isInstalled()) {
+      setStatus("Open EtherCast inside World App to cast affirmations.", "error");
       return;
     }
 
