@@ -13,6 +13,7 @@ let signer;
 let contract;
 let currentAccount;
 let currentChainId;
+let isWorldMiniApp = false;
 
 // Local mapping of affirmationHash -> text (purely off-chain)
 const localTextByHash = new Map();
@@ -244,6 +245,17 @@ function initCharCounter() {
 }
 
 window.addEventListener("load", () => {
+  if (window.MiniKit && typeof window.MiniKit.isInstalled === "function") {
+    try {
+      isWorldMiniApp = window.MiniKit.isInstalled();
+      if (isWorldMiniApp) {
+        console.log("EtherCast running as a World mini app.");
+      }
+    } catch (e) {
+      console.warn("MiniKit detection failed", e);
+    }
+  }
+
   loadLocalTexts();
   initCharCounter();
   connectButton.addEventListener("click", connectWallet);
