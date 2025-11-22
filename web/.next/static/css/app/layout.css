@@ -1,0 +1,273 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./styles/globals.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************/
+/* Reuse EtherCast cosmic styling from the original static frontend */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background: #02020a;
+  color: #f8f4ff;
+  overflow-x: hidden;
+}
+
+.cosmos-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(150, 96, 255, 0.26), transparent 60%),
+    radial-gradient(circle at 80% 0%, rgba(255, 96, 192, 0.23), transparent 55%),
+    radial-gradient(circle at 50% 80%, rgba(0, 200, 255, 0.18), transparent 60%),
+    #00040a;
+  filter: blur(1px);
+}
+
+.shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 0%, #ff8af2, transparent 60%),
+    radial-gradient(circle at 70% 100%, #7cfbff, transparent 60%),
+    #1b0735;
+  box-shadow: 0 0 24px rgba(189, 120, 255, 0.7);
+  font-size: 22px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.subtitle.small {
+  margin-top: 4px;
+  font-size: 0.8rem;
+}
+
+.panel {
+  background: radial-gradient(circle at 0 0, rgba(194, 130, 255, 0.25), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(61, 223, 255, 0.22), transparent 60%),
+    rgba(2, 2, 20, 0.96);
+  border-radius: 18px;
+  padding: 20px 18px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(180, 120, 255, 0.4);
+  box-shadow: 0 0 32px rgba(40, 10, 80, 0.8);
+}
+
+.panel h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+}
+
+.field span {
+  opacity: 0.9;
+}
+
+textarea,
+input[type="datetime-local"] {
+  background: rgba(7, 4, 30, 0.9);
+  border-radius: 10px;
+  border: 1px solid rgba(170, 120, 255, 0.7);
+  color: #f9f5ff;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  outline: none;
+  resize: vertical;
+  min-height: 72px;
+}
+
+input[type="datetime-local"] {
+  min-height: auto;
+}
+
+textarea:focus,
+input[type="datetime-local"]:focus {
+  box-shadow: 0 0 0 1px rgba(206, 147, 255, 0.9), 0 0 20px rgba(138, 89, 255, 0.8);
+}
+
+.field-meta {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  border-radius: 999px;
+  padding: 8px 18px;
+  border: 1px solid rgba(194, 140, 255, 0.8);
+  background: radial-gradient(circle at 0 0, #ff8af2, transparent 60%),
+    radial-gradient(circle at 100% 100%, #7cfbff, transparent 60%),
+    rgba(10, 4, 40, 0.96);
+  color: #fdf9ff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.2s ease-out;
+}
+
+.btn.primary {
+  margin-top: 4px;
+}
+
+.btn:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 0 22px rgba(192, 140, 255, 0.9);
+  filter: saturate(1.2);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.status {
+  margin-top: 10px;
+  min-height: 1em;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.status.error {
+  color: #ff9ac7;
+}
+
+.status.success {
+  color: #c2ffdd;
+}
+
+.timeline-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline {
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(230, 210, 255, 0.25);
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(248, 240, 255, 0.6), transparent);
+  opacity: 0.4;
+}
+
+.timeline-node {
+  position: relative;
+  min-width: 180px;
+  max-width: 220px;
+  background: radial-gradient(circle at 0 0, rgba(255, 138, 242, 0.4), transparent 70%),
+    radial-gradient(circle at 100% 100%, rgba(124, 251, 255, 0.3), transparent 70%),
+    rgba(6, 4, 36, 0.96);
+  border-radius: 16px;
+  padding: 10px 10px 12px;
+  border: 1px solid rgba(210, 170, 255, 0.9);
+  box-shadow: 0 0 26px rgba(130, 70, 255, 0.7);
+  animation: pulseGlow 4.5s ease-in-out infinite;
+}
+
+.timeline-node::before {
+  content: "☉";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: #ffe9ff;
+  text-shadow: 0 0 8px rgba(255, 201, 255, 0.9);
+}
+
+.timeline-node .meta {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.timeline-node .hash {
+  font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+.timeline-node .text {
+  margin-top: 6px;
+  font-size: 0.8rem;
+}
+
+.timeline-empty {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(130, 70, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 34px rgba(244, 167, 255, 0.95);
+  }
+}
+
+@media (max-width: 720px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline::before {
+    top: 72px;
+  }
+}
+
