@@ -6,12 +6,13 @@ const AFFIRMATIONS_ABI = [
 ];
 
 // TODO: paste your deployed contract address here
-const CONTRACT_ADDRESS = "0xYourAffirmationsAddress";
+const CONTRACT_ADDRESS = "0x4F788C5cBa508Eb0842F84F9c5CBE707b2Df43EE";
 
 let provider;
 let signer;
 let contract;
 let currentAccount;
+let currentChainId;
 
 // Local mapping of affirmationHash -> text (purely off-chain)
 const localTextByHash = new Map();
@@ -76,12 +77,24 @@ async function connectWallet() {
     provider = new ethers.BrowserProvider(window.ethereum);
     const accounts = await provider.send("eth_requestAccounts", []);
     currentAccount = accounts[0];
+    const network = await provider.getNetwork();
+    currentChainId = Number(network.chainId);
+
+    if (currentChainId !== 11155111) {
+      signer = undefined;
+      contract = undefined;
+      setStatus("Please switch your wallet to the Sepolia network to use EtherCast.", "error");
+      connectButton.textContent = "Wrong network";
+      connectButton.disabled = false;
+      return;
+    }
+
     signer = await provider.getSigner();
     contract = new ethers.Contract(CONTRACT_ADDRESS, AFFIRMATIONS_ABI, signer);
 
     connectButton.textContent = shortenAddress(currentAccount);
     connectButton.disabled = true;
-    setStatus("Wallet connected. You may cast an affirmation.", "success");
+    setStatus("Wallet connected on Sepolia. You may cast an affirmation.", "success");
 
     await refreshTimeline();
   } catch (err) {
@@ -93,6 +106,19 @@ async function connectWallet() {
 async function submitAffirmation() {
   if (!contract || !signer) {
     setStatus("Connect your wallet first.", "error");
+    return;
+  }
+
+  try {
+    const network = await provider.getNetwork();
+    const chainId = Number(network.chainId);
+    if (chainId !== 11155111) {
+      setStatus("Wrong network: please switch your wallet to Sepolia.", "error");
+      return;
+    }
+  } catch (err) {
+    console.error(err);
+    setStatus("Unable to read network from provider.", "error");
     return;
   }
 

@@ -1,8 +1,8 @@
 const hre = require("hardhat");
 
 async function main() {
-  const Affirmations = await hre.ethers.getContractFactory("Affirmations");
-  const affirmations = await Affirmations.deploy();
+  // With ethers v6 + Hardhat, prefer hre.ethers.deployContract
+  const affirmations = await hre.ethers.deployContract("Affirmations");
 
   await affirmations.waitForDeployment();
 
