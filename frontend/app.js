@@ -265,15 +265,12 @@ function initCharCounter() {
 }
 
 window.addEventListener("load", () => {
-  if (window.MiniKit && typeof window.MiniKit.isInstalled === "function") {
-    try {
-      isWorldMiniApp = window.MiniKit.isInstalled();
-      if (isWorldMiniApp) {
-        console.log("EtherCast running as a World mini app.");
-      }
-    } catch (e) {
-      console.warn("MiniKit detection failed", e);
-    }
+  // Initialize read-only provider + contract for timeline
+  try {
+    provider = new ethers.JsonRpcProvider(WORLD_RPC_URL);
+    contract = new ethers.Contract(CONTRACT_ADDRESS, AFFIRMATIONS_ABI, provider);
+  } catch (e) {
+    console.warn("Failed to initialize World Chain provider/contract", e);
   }
 
   loadLocalTexts();
