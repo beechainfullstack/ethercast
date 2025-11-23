@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MiniKit } from "@worldcoin/minikit-js";
 
-const ACTION_ID = process.env.NEXT_PUBLIC_WORLD_APP_ACTION_ID ?? "worldchain-test-action";
+const ACTION_ID = "ethercast-presence-check";
 
 export default function Home() {
   const [status, setStatus] = useState<string>("");

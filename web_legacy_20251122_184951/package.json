@@ -1,0 +1,22 @@
+{
+  "name": "ethercast-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@worldcoin/minikit-js": "^1.9.6",
+    "ethers": "^6.11.1",
+    "next": "^14.2.33",
+    "node": "^25.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "siwe": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.6"
+  }
+}
