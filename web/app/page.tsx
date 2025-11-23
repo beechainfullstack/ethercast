@@ -25,7 +25,7 @@ export default function Home() {
         signal: undefined,
       });
 
-      if (result.status !== "success") {
+      if (!result || result.status !== "success") {
         setStatus("rejected");
         setDetails("verification was not completed");
         return;
